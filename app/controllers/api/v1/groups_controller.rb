@@ -28,7 +28,7 @@ class Api::V1::GroupsController < Api::BaseController
         if !current_user
           render json: { error: 'This method requires an authenticated user' }, status: 422
         end
-        @groups = Group.joins(:group_accounts).where(is_archived: false, group_accounts: { account: current_account, role: :admin }).all
+        @groups = Group.joins(:group_accounts).where(is_archived: false, group_accounts: { account: current_account, role: [:admin, :moderator] }).all
     end
 
     render json: @groups, each_serializer: REST::GroupSerializer
