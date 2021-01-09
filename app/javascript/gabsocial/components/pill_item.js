@@ -41,6 +41,13 @@ class PillItem extends React.PureComponent {
     } = this.props
     const { isCurrent } = this.state
 
+    const isEmpty = !title && !to && !onClick
+    if (isEmpty) {
+      return (
+        <div className={[_s.d, _s.h100PC, _s.w1PX, _s.ml10, _s.mr10, _s.bgSecondary].join(' ')} />    
+      )
+    }
+    
     // Combine state, props, location to make absolutely
     // sure of active status.
     const active = isActive || (to === location.pathname && !location.search) || isCurrent

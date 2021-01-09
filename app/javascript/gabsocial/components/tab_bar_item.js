@@ -50,6 +50,14 @@ class TabBarItem extends React.PureComponent {
     } = this.props
     const { isCurrent } = this.state
 
+    const isEmpty = !title && !to && !onClick
+    if (isEmpty) {
+      return (
+        <div className={[_s.d, _s.h100PC, _s.w1PX, _s.ml10, _s.mr10, _s.bgSecondary].join(' ')} />    
+      )
+    }
+
+
     // Combine state, props, location to make absolutely
     // sure of active status.
     const active = (isActive === true || isCurrent || (to === location.pathname && !location.search))
@@ -62,15 +70,13 @@ class TabBarItem extends React.PureComponent {
       displayFlex: 1,
       aiCenter: 1,
       jcCenter: 1,
-      borderBottom2PX: 1,
+      borderBottom3PX: 1,
       py5: 1,
       outlineNone: 1,
       cursorPointer: 1,
       bgTransparent: 1,
       borderColorTransparent: !active,
       borderColorBrand: active,
-      mr5: isLarge,
-      mr2: !isLarge,
     })
 
     const textParentClasses = CX({
