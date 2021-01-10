@@ -96,6 +96,7 @@ class GroupActionButton extends ImmutablePureComponent {
 
     return (
       <Button
+        radiusSmall={!isSmall}
         {...buttonOptions}
         onClick={this.handleToggleMembership}
         className={btnClasses}
